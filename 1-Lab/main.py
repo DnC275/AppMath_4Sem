@@ -1,8 +1,8 @@
 from math import sin
+from algorithms.golden_section import GoldenSection
 
-from algorithms.method import *
 
 function = lambda x: x ** 3 * sin(x)
 print(function(5))
-a = Method(function, 10, 10, 10)
+a = GoldenSection(function, 1, 2, 5)
 print(a.function)
