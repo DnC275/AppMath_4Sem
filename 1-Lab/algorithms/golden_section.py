@@ -1,57 +1,58 @@
 from math import *
+from algorithms.method import Method
 
 counter = 0
 
 
-def f_counter(num):
-    global counter
-    counter += 1
-    return sin(num) * pow(num, 3)
+class GoldenSection(Method):
+    def f_counter(self, num):
+        global counter
+        counter += 1
+        return self.function(num)
 
+    def run(self):
+        invphi = (sqrt(5) - 1) / 2
+        invphi2 = (3 - sqrt(5)) / 2
 
-def golden_section_method(a, b, epsilon):
-    invphi = (sqrt(5) - 1) / 2
-    invphi2 = (3 - sqrt(5)) / 2
+        h = self.right - self.left
+        lengths = [h]
+        if h <= self.eps:
+            print(f'a: {self.left}; b: {self.right}; fun calls: {counter}; iterations: 0; lengths: {lengths}')
+            return (self.left, self.right, counter, 0, lengths)
 
-    h = b - a
-    lengths = []
-    lengths.append(h)
-    if h <= epsilon:
-        print(f'a: {a}; b: {b}; fun calls: {counter}; iterations: 0; lengths: {lengths}')
-        return (a, b, counter, 0, lengths)
+        # required steps to achieve tolerance
+        n = int(ceil(log(self.eps / h) / log(invphi)))
 
-    # required steps to achieve tolerance
-    n = int(ceil(log(epsilon / h) / log(invphi)))
+        x1 = self.left + invphi2 * h
+        x2 = self.left + invphi * h
+        yx1 = self.f_counter(x1)
+        yx2 = self.f_counter(x2)
 
-    x1 = a + invphi2 * h
-    x2 = a + invphi * h
-    yx1 = f_counter(x1)
-    yx2 = f_counter(x2)
+        iterations = 0
+        while h > self.eps:
+            if yx1 < yx2:
+                self.right = x2
+                x2 = x1
+                yx2 = yx1
+                h = invphi * h
+                lengths.append(h)
+                x1 = self.left + invphi2 * h
+                yx1 = self.f_counter(x1)
+                iterations += 1
+            else:
+                self.left = x1
+                x1 = x2
+                yx1 = yx2
+                h = invphi * h
+                lengths.append(h)
+                x2 = self.left + invphi * h
+                yx2 = self.f_counter(x2)
+                iterations += 1
 
-    iterations = 0
-    while h > epsilon:
         if yx1 < yx2:
-            b = x2
-            x2 = x1
-            yx2 = yx1
-            h = invphi * h
-            lengths.append(h)
-            x1 = a + invphi2 * h
-            yx1 = f_counter(x1)
-            iterations+=1
+            print(
+                f'a: {self.left}; b: {self.right}; fun calls: {counter}; iterations: {iterations}; lengths: {lengths}')
+            return (self.left, x2, counter, n, lengths)
         else:
-            a = x1
-            x1 = x2
-            yx1 = yx2
-            h = invphi * h
-            lengths.append(h)
-            x2 = a + invphi * h
-            yx2 = f_counter(x2)
-            iterations+=1
-
-    if yx1 < yx2:
-        print(f'a: {a}; b: {b}; fun calls: {counter}; iterations: {iterations}; lengths: {lengths}')
-        return (a, x2, counter, n, lengths) # self.a = var
-    else:
-        print(f'a: {a}; b: {b}; fun calls: {counter}; iterations: {iterations}; lengths: {lengths}')
-        return (x1, b, counter, n, lengths)
+            print(f'a: {self.left}; b: {self.left}; fun calls: {counter}; iterations: {iterations}; lengths: {lengths}')
+            return (x1, self.right, counter, n, lengths)
