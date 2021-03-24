@@ -28,7 +28,7 @@ class GoldenSection(Method):
         yx1 = self.f_counter(x1)
         yx2 = self.f_counter(x2)
 
-        iterations = 0
+        iterations = 1
         while h > self.eps:
             if yx1 < yx2:
                 self.right = x2
