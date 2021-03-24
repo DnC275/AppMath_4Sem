@@ -1,7 +1,8 @@
-from algorithms.fibonacci import *
-from algorithms.brent import *
-from algorithms.golden_section import *
+from math import sin
+from algorithms.golden_section import GoldenSection
 
-lens = golden_section_method(3, 6, 0.01)[4]
-for i in range(1, len(lens)):
-    print(lens[i-1]/lens[i])
+
+function = lambda x: x ** 3 * sin(x)
+print(function(5))
+a = GoldenSection(function, 1, 2, 5)
+print(a.function)
