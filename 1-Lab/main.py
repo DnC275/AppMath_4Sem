@@ -1,16 +1,7 @@
-# This is a sample Python script.
+from algorithms.fibonacci import *
+from algorithms.brent import *
+from algorithms.golden_section import *
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+lens = golden_section_method(3, 6, 0.01)[4]
+for i in range(1, len(lens)):
+    print(lens[i-1]/lens[i])
