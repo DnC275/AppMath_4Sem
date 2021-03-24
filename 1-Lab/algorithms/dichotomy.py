@@ -11,6 +11,7 @@ class DichotomyMethod(Method):
         left = self.left
         right = self.right
         while right - left >= self.eps:
+            first_diff = right - left
             self.iterations += 1
             x1 = ((right + left) / 2) - self.eps / 2 * 0.8
             x2 = ((right + left) / 2) + self.eps / 2 * 0.8
@@ -26,5 +27,6 @@ class DichotomyMethod(Method):
                 right = x2
             else:
                 assert IOError("idk how you did this but your I/O quite bad")
+            self.relations.append((right - left) / first_diff)
         self.answer_point = (right + left) / 2
         self.answer = self.function(self.answer_point)
