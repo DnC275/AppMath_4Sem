@@ -27,6 +27,7 @@ class DichotomyMethod(Method):
                 right = x2
             else:
                 assert IOError("idk how you did this but your I/O quite bad")
+            self.range.append([float('%.4f' % left), float('%.4f' % right)])
             self.relations.append((right - left) / first_diff)
         self.answer_point = (right + left) / 2
         self.answer = self.function(self.answer_point)

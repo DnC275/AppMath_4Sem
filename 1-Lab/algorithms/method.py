@@ -9,6 +9,7 @@ class Method:
         self.answer = None
         self.answer_point = None
         self.relations = []
+        self.range = []
 
     def run(self):
         pass
