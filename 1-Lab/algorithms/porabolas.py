@@ -13,7 +13,6 @@ class Porabolass(Method):
         self.function_calls += 3
         prev_len = b - a
         while b - a >= self.eps:
-            #print(a, b)
             u = x - ((x - a) ** 2 * (f2 - f3) - (x - b) ** 2 * (f2 - f1)) / (
                         2 * ((x - a) * (f2 - f3) - (x - b) * (f2 - f1)))
             if u > b or u < a:
@@ -45,7 +44,7 @@ class Porabolass(Method):
                 self.function_calls += 1
             self.iterations += 1
             real_len = b - a
-            #print("[", "{:.5f}".format(a), ", ", "{:.5f}".format(b), "]", sep = '')
-            #print(a, b)
-            #print(real_len/prev_len)
+            self.range.append((a, b))
+            self.relations.append(real_len/prev_len)
+            prev_len = real_len
         self.answer = (a + b) / 2
