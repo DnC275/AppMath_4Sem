@@ -47,4 +47,5 @@ class Porabolass(Method):
             self.range.append((a, b))
             self.relations.append(real_len/prev_len)
             prev_len = real_len
-        self.answer = (a + b) / 2
+        self.answer_point = (a + b) / 2
+        self.answer = self.function(self.answer_point)
