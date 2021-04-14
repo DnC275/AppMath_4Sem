@@ -1,1 +1,11 @@
+# first lab
 1-Lab/venv
+1-Lab/algorithms/__pycache__
+1-Lab/.idea
+
+# second lab
+2-Lab/venv
+2-Lab/algorithms/__pycache__
+2-Lab/.idea
+
+.vscode/

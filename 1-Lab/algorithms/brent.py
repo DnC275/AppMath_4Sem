@@ -1,6 +1,7 @@
 from algorithms.method import Method
 from math import sqrt
 
+function_call_counter = 0
 
 class Brent(Method):
     # implementation here
@@ -69,7 +70,8 @@ class Brent(Method):
             self.range.append((a, c))
             self.relations.append(real_len / prev_len)
             prev_len = real_len
-        self.answer = (a + c) / 2
+        self.answer_point = (a + c) / 2
+        self.answer = self.function(self.answer_point)
 
     def parabol_func(self, a, x, b, f1, f2, f3):
         u = x - ((x - a) ** 2 * (f2 - f3) - (x - b) ** 2 * (f2 - f1)) / (
