@@ -1,19 +1,8 @@
-from algorithms.method import Method
-import utils
-
+from method import Method
+from .. import utils
 
 class FastestDescent(Method):
     def run(self):
-<<<<<<< HEAD
-        pass
-
-
-func = lambda x: x ** 2
-print(ndt.Gradient(func)([1]))
-# class FastestDescent(Method):
-#     def run(self):
-#         while
-=======
         x0 = self.x0
         gradx0 = self.calculate_gradient(x0)
         _lambda = self.lambda_by_fibonacci(x0)
@@ -33,4 +22,3 @@ print(ndt.Gradient(func)([1]))
 
 # func = lambda x: x[0]**2 + x[1]**2
 # print(ndt.Gradient(func)([4, 1]))
->>>>>>> 78a3315c628f81645cb38633a3bd91ca4860a046

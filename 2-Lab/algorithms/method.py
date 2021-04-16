@@ -4,7 +4,7 @@ from numdifftools import Gradient
 
 
 class Method:
-    def __init__(self, function, eps, x0: list):
+    def __init__(self, function, eps, n, x0: list):
         self.function = function
         self.eps = eps
         self.x0 = x0
