@@ -1,5 +1,5 @@
-from method import Method
 import utils
+from method import Method
 
 
 class NormalGradient(Method):

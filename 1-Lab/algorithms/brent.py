@@ -1,7 +1,8 @@
-from algorithms.method import Method
+from method import Method
 from math import sqrt
 
 function_call_counter = 0
+
 
 class Brent(Method):
     # implementation here
@@ -27,7 +28,7 @@ class Brent(Method):
                 arr = sorted([(x, fx), (w, fw), (v, fv)])
                 l, m, r = arr[0][0], arr[1][0], arr[2][0]
                 fl, fm, fr = arr[0][1], arr[1][1], arr[2][1]
-                #fl, fm, fr = self.my_func(l), self.my_func(m), self.my_func(r)
+                # fl, fm, fr = self.my_func(l), self.my_func(m), self.my_func(r)
                 u = self.parabol_func(l, m, r, fl, fm, fr)
                 if a <= u <= c and abs(u - x) < g / 2:
                     check_parabola = True

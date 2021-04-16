@@ -1,6 +1,5 @@
 from fastest_descent import FastestDescent
-from normal_gradient import NormalGradient
-import plot
+from algorithms import plot
 
 
 def func(x: list) -> float:
@@ -9,7 +8,7 @@ def func(x: list) -> float:
 
 
 # Fastest descent test
-method = FastestDescent(func, 0.001, [12, -2])
+method = FastestDescent(func, 0.001, 100, [12, -2])
 method.run()
 print(method.answer)
 print(method.answer_point)

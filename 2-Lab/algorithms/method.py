@@ -1,12 +1,14 @@
-from numdifftools import Gradient
 import math
+
+from numdifftools import Gradient
 
 
 class Method:
-    def __init__(self, function, eps, x0: list):
+    def __init__(self, function, eps, n, x0: list):
         self.function = function
         self.eps = eps
         self.x0 = x0
+        self.n = n
         self.iterations = 0
         self.function_calls = 0
         self.answer = None
@@ -17,6 +19,9 @@ class Method:
 
     def run(self):
         pass
+
+    def len_vector(self, x: list):
+        return sum([i ** 2 for i in x]) ** 2
 
     def calculate_gradient(self, x: list):
         return Gradient(self.function)(x)
