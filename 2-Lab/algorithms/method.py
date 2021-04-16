@@ -1,9 +1,10 @@
-from numdifftools import Gradient
 import math
+
+from numdifftools import Gradient
 
 
 class Method:
-    def __init__(self, function, eps, n, x0: list):
+    def __init__(self, function, eps, x0: list):
         self.function = function
         self.eps = eps
         self.x0 = x0
@@ -14,6 +15,7 @@ class Method:
         self.answer_point = None
         self.relations = []
         self.range = []
+        self.segments = []
 
     def run(self):
         pass
@@ -24,7 +26,10 @@ class Method:
     def calculate_gradient(self, x: list):
         return Gradient(self.function)(x)
 
-    def lambda_by_golden_section(self, x):
+    def lambda_static(self):
+        return 0.2
+
+    def lambda_by_golden_section(self, x: list):
         a = 0
         b = 1
         gr = self.calculate_gradient(x)
@@ -53,7 +58,7 @@ class Method:
             if b - a < self.eps:
                 return (a + b) / 2
 
-    def lambda_by_fibonacci(self, x):
+    def lambda_by_fibonacci(self, x: list):
         a = 0
         b = 1
 
