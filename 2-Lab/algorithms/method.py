@@ -21,6 +21,9 @@ class Method:
     def calculate_gradient(self, x: list):
         return Gradient(self.function)(x)
 
+    def lambda_static(self):
+        return 0.2
+
     def lambda_by_golden_section(self, x: list):
         a = 0
         b = 1

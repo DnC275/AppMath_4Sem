@@ -9,7 +9,6 @@ def plot_and_show(m: method.Method):
 
     z = 2 * x[0]**2 + 4 * x[1]**2 - 5 * x[0] * x[1] / 2 - 3 * x[1]
     #z = x[0]**2 + x[1]**2
-    print(z)
 
     fig, ax = plt.subplots()
     cp = ax.contour(x[0], x[1], z, levels=15)
