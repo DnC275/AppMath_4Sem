@@ -1,4 +1,4 @@
-from algorithms.method import Method
+from method import Method
 import utils
 
 
