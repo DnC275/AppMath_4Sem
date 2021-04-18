@@ -4,11 +4,12 @@ from numdifftools import Gradient
 
 
 class Method:
-    def __init__(self, function, eps, n, x0: list):
+    def __init__(self, function, eps, n, _lambda, x0: list):
         self.function = function
         self.eps = eps
         self.x0 = x0
         self.n = n
+        self._lambda = _lambda
         self.iterations = 0
         self.function_calls = 0
         self.answer = None
@@ -27,7 +28,8 @@ class Method:
         return Gradient(self.function)(x)
 
     def lambda_static(self):
-        return 0.2
+        return self._lambda
+
 
     def lambda_by_golden_section(self, x: list):
         a = 0
