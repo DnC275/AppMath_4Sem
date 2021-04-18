@@ -30,7 +30,6 @@ class Method:
     def lambda_static(self):
         return self._lambda
 
-
     def lambda_by_golden_section(self, x: list):
         a = 0
         b = 1
