@@ -1,7 +1,5 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import matplotlib.pylab as pb
-from algorithms import method
 
 
 def plot_and_show(m: method.Method):

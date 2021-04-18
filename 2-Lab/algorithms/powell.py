@@ -23,7 +23,7 @@ class Powell(Method):
             p[1] = [cur_x[k] - y[k] for k in range(len(p))]
             print(p, '!!!!')
         self.answer_point = cur_x
-        return cur_x
+        return cur_
 
     def run_(self):
         p1 = [1, 0]
