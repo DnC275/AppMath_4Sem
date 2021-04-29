@@ -32,7 +32,7 @@ class Method:
 
     def lambda_by_golden_section(self, x: list):
         a = 0
-        b = 1
+        b = 10
         gr = self.calculate_gradient(x)
 
         k1 = (3 - math.sqrt(5)) / 2

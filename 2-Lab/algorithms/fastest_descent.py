@@ -1,5 +1,6 @@
 from method import Method
 import utils
+from scipy import optimize
 
 
 class FastestDescent(Method):
@@ -7,7 +8,9 @@ class FastestDescent(Method):
         x0 = self.x0
         gradx0 = self.calculate_gradient(x0)
         _lambda = self.lambda_by_fibonacci(x0)
-        #_lambda = self.lambda_by_golden_section(x0)
+        # _lambda = self.lambda_by_golden_section(x0)
+        # new_func = lambda _lambda: self.function(utils.get_list_sum(x0, utils.multiply_list_by_number(gradx0, -_lambda)))  # 2
+        # _lambda = optimize.minimize(new_func, x0=0)["x"][0]
         s = _lambda * gradx0
         x = utils.get_list_subtraction(x0, s)
         self.iterations += 1
@@ -16,7 +19,9 @@ class FastestDescent(Method):
             x0 = x
             gradx0 = self.calculate_gradient(x0)
             _lambda = self.lambda_by_fibonacci(x0)
-            #_lambda = self.lambda_by_golden_section(x0)
+            # _lambda = self.lambda_by_golden_section(x0)
+            # new_func = lambda _lambda: self.function(utils.get_list_sum(x0, utils.multiply_list_by_number(gradx0, -_lambda)))  # 2
+            # _lambda = optimize.minimize(new_func, x0=0)["x"][0]
             s = _lambda * gradx0
             x = utils.get_list_subtraction(x0, s)
             self.iterations += 1

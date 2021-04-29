@@ -9,10 +9,5 @@
 2-Lab/venv
 2-Lab/algorithms/__pycache__
 2-Lab/.idea
-<<<<<<< HEAD
-2-Lab/main.py
-
-=======
-*main*
->>>>>>> ad94e62811f478c98bf723cd66c5bc371b41b723
+2-Lab/algorithms/main.py
 .vscode/
