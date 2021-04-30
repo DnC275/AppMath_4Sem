@@ -24,5 +24,7 @@ class ConjugateGradient(Method):
 
             b = (self.len_vector(ndt.Gradient(self.function)(cur_x)) ** 2) / (self.len_vector(ndt.Gradient(self.function)(tmp)) ** 2)
             pk = [-gr[i] - b*pk[i] for i in range(len(pk))]
-        return cur_x
+        self.answer = cur_x
+        self.answer_point = self.function(cur_x)
+        return self.answer
 

@@ -5,28 +5,21 @@ import utils
 
 class Powell(Method):
     def run(self):
-        x = self.x0[:]
-        n = 2
-        d = [[1, 0], [0, 1]]
-        while True:
-            new_func = lambda _lambda: self.function(utils.get_list_sum(x, utils.multiply_list_by_number(d[n - 1], _lambda))) # 2
-            _lambda = optimize.minimize(new_func, x0=0)["x"][0]
-            x = utils.get_list_sum(x, utils.multiply_list_by_number(d[n - 1], _lambda)) # 3
-            y = x[:]
-            i = 1
-            while i < n + 1: # 4, 5, 6
-                new_func = lambda _lambda: self.function(utils.get_list_sum(x, utils.multiply_list_by_number(d[i - 1], _lambda)))
-                _lambda = optimize.minimize(new_func, x0=0)["x"][0]
-                x = utils.get_list_sum(x, utils.multiply_list_by_number(d[i - 1], _lambda))
+        p = [[1, 0], [0, 1]]
+        cur_x = self.x0[:]
+        while self.len_vector(p[1]) >= self.eps:
+            new_function = lambda l: self.function([cur_x[k] + l * p[1][k] for k in range(len(cur_x))])
+            h_min = optimize.minimize(new_function, x0=0)["x"][0]
+            cur_x = [cur_x[k] + h_min * p[1][k] for k in range(len(cur_x))]
+            y = cur_x[:]
+            i = 0
+            while i <= 1:
+                new_function = lambda l: self.function([cur_x[k] + l * p[i][k] for k in range(len(cur_x))])
+                h_min = optimize.minimize(new_function, x0=0)["x"][0]
+                cur_x = [cur_x[k] + h_min * p[i][k] for k in range(len(cur_x))]
                 i += 1
-            i = 1
-            while i < n:
-                d[i - 1] = d[i]
-                i += 1
-            d[n - 1] = utils.get_list_subtraction(x, y)
-            if utils.get_vector_module(d[n - 1]) < self.eps:
-                break
-        self.answer_point = x
-        self.answer = self.function(x)
-        return self
-
+            i = 0
+            p[i] = p[i+1][:]
+            p[1] = [cur_x[k] - y[k] for k in range(len(p))]
+            print(p, '!!!!')
+        self.answer_point = cur_x

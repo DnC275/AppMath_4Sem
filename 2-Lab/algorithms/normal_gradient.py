@@ -21,4 +21,3 @@ class NormalGradient(Method):
         pre_result = utils.get_list_sum(x, x0)
         self.answer = self.function(utils.divide_list_by_number(pre_result, 2))
         self.answer_point = utils.divide_list_by_number(pre_result, 2)
-        return self
