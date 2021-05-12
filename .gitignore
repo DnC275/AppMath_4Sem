@@ -11,3 +11,12 @@
 2-Lab/algorithms/plot.py
 2-Lab/algorithms/point4.py
 .vscode/
+
+# third lab
+3-Lab/venv
+3-Lab/algorithms/__pycache__
+3-Lab/.idea
+3-Lab/algorithms/main.py
+3-Lab/main.py
+venv/
+.idea/
