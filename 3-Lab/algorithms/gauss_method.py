@@ -15,7 +15,7 @@ class GaussMethod(Method):
                                      self.matrix.decomposed_lower[i, i]
 
             self.answer[0, n - 1] = lower_answer[0, n - 1] / self.matrix.decomposed_upper[n - 1, n - 1]
-            for i in range(n - 2, -1, -1):  # Todo: Check with matrices n>3
+            for i in range(n - 2, -1, -1):
                 self.answer[0, i] = (lower_answer[0, i] - sum(
                     [self.matrix.decomposed_upper[i, k] * self.answer[0, k] for k in range(i + 1, n)])) / \
                                     self.matrix.decomposed_upper[i, i]
