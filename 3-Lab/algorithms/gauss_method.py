@@ -1,4 +1,4 @@
-from .method import Method
+from method import Method
 import scipy.sparse as scisp
 
 
@@ -8,6 +8,7 @@ class GaussMethod(Method):
 
         for step in range(n):
             lower_answer = scisp.lil_matrix((1, n))
+            print(self.m_equals[0, 0])
             lower_answer[0, 0] = self.m_equals[0, 0] / self.matrix.decomposed_lower[0, 0]
             for i in range(1, n):
                 lower_answer[0, i] = (self.m_equals[0, i] - sum(
